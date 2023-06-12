@@ -1,6 +1,8 @@
 import sanityClient from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
 
+import type { IImage } from '@/interfaces';
+
 export const client = sanityClient({
   projectId: 'wtkrqp9y',
   dataset: 'production',
@@ -11,4 +13,4 @@ export const client = sanityClient({
 
 const builder = imageUrlBuilder(client);
 
-export const URLFor = (source: string) => builder.image(source);
+export const URLFor = (source: IImage): string => builder.image(source).url();
