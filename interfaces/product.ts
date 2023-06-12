@@ -2,7 +2,7 @@ import type { IImage, ISlug } from './';
 
 export interface IProduct {
   details: string
-  images: IImage[]
+  image: IImage[]
   name: string
   price: number
   slug: ISlug
