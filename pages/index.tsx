@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next';
 
 import type { IBanner, IProduct } from '@/interfaces';
-import { HeroBanner, Product } from '@/components';
+import { FooterBanner, HeroBanner, Product, Layout } from '@/components';
 import { client } from '@/lib/client';
 
 interface Props {
@@ -11,7 +11,10 @@ interface Props {
 
 export default function Home({ products, banner }: Props) {
   return (
-    <>
+    <Layout
+      title="Commercit | Home"
+      description="The best e-commerce to buy and sell your products."
+    >
       <HeroBanner banner={banner[0]} />
       <section className="products-heading">
         <h2>Beset Selling Products</h2>
@@ -22,7 +25,8 @@ export default function Home({ products, banner }: Props) {
           products.map((product) => <Product key={product._id} product={product} />)
         }
       </section>
-    </>
+      <FooterBanner banner={banner[0]} />
+    </Layout>
   );
 }
 
