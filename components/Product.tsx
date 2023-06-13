@@ -22,7 +22,7 @@ export function Product ({ product }: Props) {
             className="product-image"
           />
           <p className="product-name">{product.name}</p>
-          <p className="product-price">{product.price}</p>
+          <p className="product-price">${product.price}</p>
         </article>
       </Link>
     </section>

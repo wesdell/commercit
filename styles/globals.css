@@ -1,6 +1,5 @@
 :root {
   --app-principal-color: #324d67;
-
   --principal-color-red: #f02d34;
 }
 
@@ -471,7 +470,7 @@ span.text-red {
   margin-top: 10px;
   margin-top: 40px;
   text-transform: uppercase;
-  background-color: var(--principal-color-red);
+  background-color: var(--app-principal-color);
   color: #fff;
   cursor: pointer;
   transform: scale(1, 1);
@@ -502,7 +501,7 @@ span.text-red {
 }
 
 .product-detail-image:hover {
-  background-color: var(--principal-color-red);
+  background-color: var(--app-principal-color);
 
 }
 
@@ -521,7 +520,7 @@ span.text-red {
 }
 
 .selected-image {
-  background-color: var(--principal-color-red);
+  background-color: var(--app-principal-color);
 }
 
 .reviews {
@@ -573,12 +572,12 @@ span.text-red {
 
 .buttons .add-to-cart {
   padding: 10px 20px;
-  border: 1px solid var(--principal-color-red);
+  border: 1px solid var(--app-principal-color);
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
   background-color: white;
-  color: var(--principal-color-red);
+  color: var(--app-principal-color);
   cursor: pointer;
   width: 200px;
   transform: scale(1, 1);
@@ -591,9 +590,8 @@ span.text-red {
 
 .buttons .buy-now {
   width: 200px;
-
   padding: 10px 20px;
-  background-color: var(--principal-color-red);
+  background-color: var(--app-principal-color);
   color: white;
   border: none;
   margin-top: 40px;
