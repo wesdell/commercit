@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
 
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import type { IProduct } from '@/interfaces';
+import { CartContext } from '@/context';
 import { Product, Layout } from '@/components';
 import { client, URLFor } from '@/lib/client';
 
@@ -15,6 +16,7 @@ interface Props {
 
 export default function ProductSlug ({ product, products }: Props) {
   const [index, setIndex] = useState(0);
+  const { quantity, decreaseQuantity, increaseQuantity, addToCart } = useContext(CartContext);
 
   return (
     <Layout
@@ -35,7 +37,7 @@ export default function ProductSlug ({ product, products }: Props) {
               {
                 product.image.map((item, idx) => (
                   <img
-                    key={item.key}
+                    key={`${item.key} image ${idx}`}
                     src={URLFor(item)}
                     className={idx === index ? 'small-image selected-image' : 'small-image'}
                     onMouseEnter={() => setIndex(idx)}
@@ -62,19 +64,23 @@ export default function ProductSlug ({ product, products }: Props) {
             <div className="quantity">
               <h3>Quantity: </h3>
               <p className="quantity-desc">
-                <span className="minus">
+                <span className="minus" onClick={decreaseQuantity}>
                   <AiOutlineMinus />
                 </span>
                 <span className="num">
-                  0
+                  {quantity}
                 </span>
-                <span className="plus">
+                <span className="plus" onClick={increaseQuantity}>
                   <AiOutlinePlus />
                 </span>
               </p>
             </div>
             <div className="buttons">
-              <button type="button" className="add-to-cart">
+              <button
+                type="button"
+                className="add-to-cart"
+                onClick={() => addToCart(product, quantity)}
+              >
                 Add to Cart
               </button>
               <button type="button" className="buy-now">
