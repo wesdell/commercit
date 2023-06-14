@@ -5,6 +5,7 @@ export interface IProduct {
   image: IImage[]
   name: string
   price: number
+  quantity?: number
   slug: ISlug
   _rev: string
   _id: string
