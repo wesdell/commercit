@@ -1,8 +1,15 @@
+import { useContext } from 'react';
+
 import Link from 'next/link';
 
 import { AiOutlineShopping } from 'react-icons/ai';
 
+import { Cart } from './';
+import { CartContext } from '@/context';
+
 export function NavBar () {
+  const { showCart, totalItems, toggleCart } = useContext(CartContext);
+
   return (
     <nav className="navbar-container">
       <p className="logo">
@@ -15,13 +22,14 @@ export function NavBar () {
       <button
         type="button"
         className="cart-icon"
-        // onClick={}
+        onClick={toggleCart}
       >
         <AiOutlineShopping />
         <span className="cart-item-qty">
-          1
+          {totalItems}
         </span>
       </button>
+      {showCart && <Cart />}
     </nav>
   );
 }

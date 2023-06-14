@@ -1,3 +1,4 @@
+export * from './Cart';
 export * from './HeroBanner';
 export * from './FooterBanner';
 export * from './Footer';
