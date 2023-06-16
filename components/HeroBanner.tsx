@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import type { IBanner } from '@/interfaces';
 import { URLFor } from '@/lib/client';
@@ -17,7 +18,8 @@ export function HeroBanner ({ banner }: Props) {
         <h3>
           {banner.midText}
         </h3>
-        <img
+        <Image
+          unoptimized
           src={URLFor(banner.image)}
           alt={banner.product}
           className="hero-banner-image"

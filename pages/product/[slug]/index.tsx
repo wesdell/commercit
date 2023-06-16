@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
 
 import type { GetStaticPaths, GetStaticProps } from 'next';
+import Image from 'next/image';
 
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
@@ -27,7 +28,8 @@ export default function ProductSlug ({ product, products }: Props) {
         <section className="product-detail-container">
           <article>
             <article className="image-container">
-              <img
+              <Image
+                unoptimized
                 src={URLFor(product.image[index])}
                 alt={product.name}
                 className="product-detail-image"
@@ -36,9 +38,11 @@ export default function ProductSlug ({ product, products }: Props) {
             <article className="small-images-container">
               {
                 product.image.map((item, idx) => (
-                  <img
+                  <Image
+                    unoptimized
                     key={`${item.key} image ${idx}`}
                     src={URLFor(item)}
+                    alt="small product"
                     className={idx === index ? 'small-image selected-image' : 'small-image'}
                     onMouseEnter={() => setIndex(idx)}
                   />

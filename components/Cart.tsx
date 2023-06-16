@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { AiOutlineMinus, AiOutlinePlus, AiOutlineLeft, AiOutlineShopping } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
@@ -74,7 +75,8 @@ export function Cart () {
                 {
                   itemsInCart.map((item) => (
                     <section className="product" key={item._id}>
-                      <img
+                      <Image
+                        unoptimized
                         src={URLFor(item.image[0])}
                         alt={item.name}
                         className="cart-product-image"

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import type { IBanner } from '@/interfaces';
 import { URLFor } from '@/lib/client';
@@ -29,7 +30,8 @@ export function FooterBanner ({ banner }: Props) {
             </button>
           </Link>
         </article>
-        <img
+        <Image
+          unoptimized
           src={URLFor(banner.image)}
           alt={banner.product}
           className="footer-banner-image"

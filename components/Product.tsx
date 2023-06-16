@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import type { IProduct } from '@/interfaces';
 import { URLFor } from '@/lib/client';
@@ -14,7 +15,8 @@ export function Product ({ product }: Props) {
         href={`/product/${product.slug.current}`}
       >
         <article className="product-card">
-          <img
+          <Image
+            unoptimized
             src={URLFor(product.image[0])}
             alt={product.name}
             width={250}
