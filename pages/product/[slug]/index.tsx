@@ -16,7 +16,7 @@ interface Props {
 
 export default function ProductSlug ({ product, products }: Props) {
   const [index, setIndex] = useState(0);
-  const { quantity, decreaseQuantity, increaseQuantity, addToCart } = useContext(CartContext);
+  const { quantity, decreaseQuantity, increaseQuantity, addToCart, buyNow } = useContext(CartContext);
 
   return (
     <Layout
@@ -83,7 +83,7 @@ export default function ProductSlug ({ product, products }: Props) {
               >
                 Add to Cart
               </button>
-              <button type="button" className="buy-now">
+              <button type="button" className="buy-now" onClick={() => buyNow(product, quantity)}>
                 Buy Now
               </button>
             </div>
