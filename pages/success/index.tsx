@@ -5,14 +5,12 @@ import Link from 'next/link';
 import { BsBagCheckFill } from 'react-icons/bs';
 
 import { CartContext } from '@/context';
-import { runFireworks } from '@/utils';
 
 export default function Home() {
   const { successPayment } = useContext(CartContext);
 
   useEffect(() => {
     successPayment();
-    runFireworks();
   }, [successPayment]);
   
   
