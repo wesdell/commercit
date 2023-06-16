@@ -17,7 +17,9 @@ export interface CartContextProps {
   increaseCartItemQuantity: (product: IProduct) => void
   decreaseCartItemQuantity: (product: IProduct) => void
   addToCart: (product: IProduct, quantity: number) => void
+  buyNow: (product: IProduct, quantity: number) => void
   removeFromCart: (product: IProduct) => void
+  successPayment: () => void
 }
 
 export interface CartStateProps {
@@ -79,6 +81,15 @@ export const CartProvider = ({ children }: Props): JSX.Element => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: product });
   };
 
+  const successPayment = () => {
+    dispatch({ type: 'SUCCESS_PAYMENT' });
+  };
+
+  const buyNow = (product: IProduct, quantity: number) => {
+    addToCart(product, quantity);
+    toggleCart();
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -89,7 +100,9 @@ export const CartProvider = ({ children }: Props): JSX.Element => {
         increaseCartItemQuantity,
         decreaseCartItemQuantity,
         addToCart,
-        removeFromCart
+        buyNow,
+        removeFromCart,
+        successPayment
       }}
     >
       {children}

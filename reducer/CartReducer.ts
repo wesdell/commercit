@@ -4,6 +4,7 @@ import type { IProduct } from '@/interfaces';
 
 type CartActionType =
   | { type: 'SHOW_CART' }
+  | { type: 'SUCCESS_PAYMENT' }
   | { type: 'INCREASE_QUANTITY' }
   | { type: 'DECREASE_QUANTITY' }
   | { type: 'INCREASE_CART_ITEM_QUANTITY', payload: IProduct }
@@ -108,6 +109,15 @@ export const CartReducer = (state: CartStateProps, action: CartActionType): Cart
       ...state,
       itemsInCart: state.itemsInCart.filter((product) => product._id !== action.payload._id),
       totalPrice: state.totalPrice - action.payload.price * action.payload.quantity!
+    };
+  case 'SUCCESS_PAYMENT':
+    return {
+      ...state,
+      quantity: 1,
+      itemsInCart: [],
+      showCart: false,
+      totalItems: 0,
+      totalPrice: 0
     };
   default:
     return state;
